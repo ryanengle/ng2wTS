@@ -2,6 +2,8 @@
 import {Component} from 'angular2/core'
 // import course.service
 import {CourseService} from './course.service'
+// 
+import {AutoGrowDirective} from './auto-grow.directive'
 
 // decorator function call
 @Component({
@@ -20,13 +22,15 @@ import {CourseService} from './course.service'
     template: `        
         <h2>Courses</h2>
         {{ title }}
+        <input type='text' autoGrow />
         <ul>
             <li *ngFor='#course of courses'>
             {{ course }}
             </li>
         </ul>
         `,    
-    providers: [CourseService]
+    providers: [CourseService],
+    directives: [AutoGrowDirective]
 })
 export class CoursesComponent {
     title: string = 'The title of courses page';
