@@ -1,5 +1,14 @@
 01-gs/
 02-a2j/
+03-dataAndEvents/
+05-controllingHTML/
+07-complexValid/
+08-re/
+09-server/
+10-spa/
+11-crud/
+12-rwa/
 node_modules/
 typings/
+vids/
 npm-debug.log
