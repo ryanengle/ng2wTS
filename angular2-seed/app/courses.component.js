@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './course.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,19 +10,22 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, course_service_1;
     var CoursesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (course_service_1_1) {
+                course_service_1 = course_service_1_1;
             }],
         execute: function() {
             // decorator function call
             CoursesComponent = (function () {
-                function CoursesComponent() {
+                function CoursesComponent(courseService) {
                     this.title = 'The title of courses page';
-                    this.courses = ['Course 1', 'Course 2', 'Course 3'];
+                    this.courses = courseService.getCourses();
                 }
                 CoursesComponent = __decorate([
                     core_1.Component({
@@ -38,9 +41,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         // interpolation: {{ title }} is an example of one-way binding. 
                         // Updating the title property will cause the component template 
                         // to be updated automatically    
-                        template: "        \n        <h2>Courses</h2>\n        {{ title }}\n        <ul>\n            <li *ngFor='#course of courses'>\n            {{ course }}\n            </li>\n        </ul>\n        "
+                        template: "        \n        <h2>Courses</h2>\n        {{ title }}\n        <ul>\n            <li *ngFor='#course of courses'>\n            {{ course }}\n            </li>\n        </ul>\n        ",
+                        providers: [course_service_1.CourseService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [course_service_1.CourseService])
                 ], CoursesComponent);
                 return CoursesComponent;
             }());

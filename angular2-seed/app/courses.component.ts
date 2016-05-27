@@ -1,5 +1,7 @@
 // import Component decorator from core angular module
 import {Component} from 'angular2/core'
+// import course.service
+import {CourseService} from './course.service'
 
 // decorator function call
 @Component({
@@ -23,9 +25,14 @@ import {Component} from 'angular2/core'
             {{ course }}
             </li>
         </ul>
-        `
+        `,    
+    providers: [CourseService]
 })
 export class CoursesComponent {
     title: string = 'The title of courses page';
-    courses: string[] = ['Course 1', 'Course 2', 'Course 3'];
+    courses;
+   
+    constructor(courseService: CourseService){
+        this.courses = courseService.getCourses();
+    }
 }
