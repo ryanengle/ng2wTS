@@ -5,8 +5,10 @@ import {Component} from 'angular2/core';
     template: `
         <i 
             class='glyphicon' 
-            [class.glyphicon-star-empty]="isEmpty" 
-            [class.glyphicon-star]="!isEmpty" 
+            [ngClass]="{
+                'glyphicon-star-empty': isEmpty,
+                'glyphicon-star': !isEmpty
+            }"
             (click)="onClick()" >
        </i> 
         `
